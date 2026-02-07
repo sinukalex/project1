@@ -2,7 +2,7 @@
 name: Deploy Project
 
 ## When to execute this workflow. "workflow_dispatch" can used to manually trigger the events"
-on: push
+on: [push, workflow_dispatch]
 
 ## To work that need to define, will starts with Jobs key
 jobs:
