@@ -1,5 +1,5 @@
 ## Workflow name
-name: Test Project
+name: Deploy Project
 
 ## When to execute this workflow. "workflow_dispatch" can used to manually trigger the events"
 on: push
@@ -22,4 +22,24 @@ jobs:
 
       - name: Run tests
         run: npm test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v6
+        with: 
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npn run build
+      
+      - name: Deploy
+        run: echo "Deploying ...."
         
